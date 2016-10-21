@@ -1,0 +1,41 @@
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.rorlig.mapquestobserverdemo">
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <application
+        android:name=".DemoApplication"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme">
+
+        <activity
+            android:name=".ExampleActivity"
+            android:label="@string/app_name">
+
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <receiver android:name="com.mapquest.tracking.core.receiver.ActiveLocationUpdateAlarmReceiver"
+            android:exported="false"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="com.mapquest.tracking.intent.action.REQUEST_ACTIVE_LOCATION_UPDATE" />
+                <category android:name="com.mapquest.tracking.example" />
+            </intent-filter>
+        </receiver>
+
+        <receiver android:name="com.mapquest.tracking.core.receiver.LocationReportingAlarmReceiver"
+            android:exported="false"
+            android:enabled="false">
+            <intent-filter>
+                <action android:name="com.mapquest.tracking.intent.action.REPORT_LOCATIONS" />
+                <category android:name="com.mapquest.tracking.example" />
+            </intent-filter>
+        </receiver>
+    </application>
+
+
+</manifest>
