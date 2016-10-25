@@ -2,12 +2,17 @@ package com.rorlig.mapquestobserverdemo;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.WindowManager;
 import android.widget.CompoundButton;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.mapquest.tracking.LocationTracker;
+
+//import com.google.android.gms.ads.identifier.AdvertisingIdClient;
+//import com.google.android.gms.ads.identifier.AdvertisingIdClient.Info;
+
 
 /**
  * @author gaurav gupta
@@ -16,6 +21,13 @@ import com.mapquest.tracking.LocationTracker;
 public class ExampleActivity extends AppCompatActivity {
     private ToggleButton mTrackingToggle;
     private LocationTracker.TrackingStateListener mTrackingStateListener;
+    private final String TAG     = "DemoApplication";
+//    Info adInfo = null;
+
+//    adInfo = AdvertisingIdClient.getAdvertisingIdInfo(mContext);
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +73,16 @@ public class ExampleActivity extends AppCompatActivity {
     }
 
     private void startTracking() {
+        Log.d(TAG, "startTracking");
         LocationTracker.getInstance().startTrackingActively();
+//        LocationTracker.getInstance().startTrackingPassively();
 
         // Keep the screen on while tracking
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
     }
 
     private void stopTracking() {
+        Log.d(TAG, "stopTracking");
         LocationTracker.getInstance().stopTracking();
 
         // Allow the screen to turn off again
@@ -79,6 +94,8 @@ public class ExampleActivity extends AppCompatActivity {
             @Override
             public void onTrackingStopped(final boolean userInitiated) {
                 if(!userInitiated) {
+                    Log.d(TAG, "TrackingStateListener: not user initiated!");
+
                     runOnUiThread(new Runnable() {
                         @Override
                         public void run() {
@@ -91,6 +108,10 @@ public class ExampleActivity extends AppCompatActivity {
                         }
                     });
                 }
+                else {
+                    Log.d(TAG, "TrackingStateListener: User Initiated!");
+                }
+
             }
         };
     }
