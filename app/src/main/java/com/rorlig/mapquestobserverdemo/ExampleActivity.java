@@ -74,8 +74,8 @@ public class ExampleActivity extends AppCompatActivity {
 
     private void startTracking() {
         Log.d(TAG, "startTracking");
-        LocationTracker.getInstance().startTrackingActively();
-//        LocationTracker.getInstance().startTrackingPassively();
+//        LocationTracker.getInstance().startTrackingActively();
+        LocationTracker.getInstance().startTrackingPassively();
 
         // Keep the screen on while tracking
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);

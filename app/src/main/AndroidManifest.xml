@@ -2,6 +2,8 @@
     package="com.rorlig.mapquestobserverdemo">
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
     <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
+    <uses-permission android:name="android.permission.READ_SMS"/>
 
     <application
         android:name=".DemoApplication"
@@ -23,7 +25,7 @@
             android:enabled="false">
             <intent-filter>
                 <action android:name="com.mapquest.tracking.intent.action.REQUEST_ACTIVE_LOCATION_UPDATE" />
-                <category android:name="com.mapquest.tracking.example" />
+                <category android:name="com.rorlig.mapquestobserverdemo" />
             </intent-filter>
         </receiver>
 
@@ -32,7 +34,7 @@
             android:enabled="false">
             <intent-filter>
                 <action android:name="com.mapquest.tracking.intent.action.REPORT_LOCATIONS" />
-                <category android:name="com.mapquest.tracking.example" />
+                <category android:name="com.rorlig.mapquestobserverdemo" />
             </intent-filter>
         </receiver>
     </application>
