@@ -41,13 +41,14 @@ public class DemoApplication extends Application {
 
 
         new LocationTracker.Builder(this, APIKEY)
-                .withActiveLocationUpdatesDuringPassiveListening(TimeUnit.SECONDS.toMillis(300), true)      // location every 5 minutes if no passive loc avail, wake up for it.
-                .withPassiveListeningMinimumLocationUpdateIntervalDuration(TimeUnit.MINUTES.toMillis(2))    // wait at most 2 minutes between passive locations
-                .withPassiveListeningMinimumLocationUpdateDistance(0)                                       // 0 meters between locations
+//                .withActiveLocationUpdatesDuringPassiveListening(TimeUnit.SECONDS.toMillis(300), true)      // location every 5 minutes if no passive loc avail, wake up for it.
+//                .withPassiveListeningMinimumLocationUpdateIntervalDuration(TimeUnit.MINUTES.toMillis(2))    // wait at most 2 minutes between passive locations
+//                .withPassiveListeningMinimumLocationUpdateDistance(0)                                       // 0 meters between locations
                 .withWakeForReporting(true)                                                                 // Wake up for reporting
-                .withReportingIntervalDuration(TimeUnit.MINUTES.toMillis(1)   )                             // report every minute (default)
+                .withReportingIntervalDuration(TimeUnit.SECONDS.toMillis(10)   )                             // report every minute (default)
 
-                .withDeviceId(mPhoneNumber + "-PassiveActive")                                              // put mdn in device id
+//                .withDeviceId(mPhoneNumber + "-PassiveActive")                                              // put mdn in device id
+                .withDeviceId(mPhoneNumber + "-Active")                                              // put mdn in device id
                 .withTrackingId(mPhoneNumber)
                 .withAdditionalObservationProvider(new AdditionalObservationProvider() {
                     @Override
